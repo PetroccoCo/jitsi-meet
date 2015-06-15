@@ -1,5 +1,4 @@
-/* global $, $iq, APP, config, connection, UI, messageHandler,
- roomName, sessionTerminated, Strophe, Util */
+/* global $, $iq, config, connection, roomName, sessionTerminated, Strophe, Util */
 var XMPPEvents = require("../../service/xmpp/XMPPEvents");
 var Settings = require("../settings/Settings");
 
@@ -333,10 +332,11 @@ var Moderator = {
                 // Do not show in case of session invalid
                 // which means just a retry
                 if (!invalidSession) {
-                    APP.UI.messageHandler.notify(
-                        null, "notify.focus",
-                        'disconnected', "notify.focusFail",
-                        {component: focusComponent, ms: retrySec});
+                    eventEmitter.emit(
+                        XMPPEvents.FOCUS_FAIL,
+                        focusComponent,
+                        retrySec
+                    );
                 }
                 // Reset response timeout
                 getNextTimeout(true);

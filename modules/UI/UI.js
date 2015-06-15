@@ -241,6 +241,14 @@ function registerListeners() {
         function (resource, devices) {
             VideoLayout.setDeviceAvailabilityIcons(resource, devices);
         });
+    APP.xmpp.addListener(XMPPEvents.FOCUS_FAIL,
+        function (focusComponent, retrySec) {
+            messageHandler.notify(
+                null, "notify.focus",
+                'disconnected', "notify.focusFail",
+                {component: focusComponent, ms: retrySec}
+            );
+        });
 
     APP.members.addListener(MemberEvents.DTMF_SUPPORT_CHANGED,
                             onDtmfSupportChanged);

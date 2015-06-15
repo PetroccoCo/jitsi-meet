@@ -30,6 +30,7 @@ var XMPPEvents = {
     CHAT_ERROR_RECEIVED: "xmpp.chat_error_received",
     ETHERPAD: "xmpp.etherpad",
     DEVICE_AVAILABLE: "xmpp.device_available",
-    START_MUTED: "xmpp.start_muted"
+    START_MUTED: "xmpp.start_muted",
+    FOCUS_FAIL: "xmpp.focus_fail"
 };
 module.exports = XMPPEvents;
