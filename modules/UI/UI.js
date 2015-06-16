@@ -249,6 +249,11 @@ function registerListeners() {
                 {component: focusComponent, ms: retrySec}
             );
         });
+    APP.xmpp.addListener(XMPPEvents.JINGLE_FATAL,
+        function (session, error) {
+            APP.UI.messageHandler.showError("dialog.sorry",
+                "dialog.internalError");
+        });
 
     APP.members.addListener(MemberEvents.DTMF_SUPPORT_CHANGED,
                             onDtmfSupportChanged);
